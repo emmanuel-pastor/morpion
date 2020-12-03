@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style.css" />
-    <script type="text/javascript" src="./game.js"></script>
-    <title>Morpion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du Morpion</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 0 auto 0 auto;
+        }
+        th {
+            border: 1px solid black;
+            width: 3cm;
+            height: 3cm;
+        }
+    </style>
 </head>
 <body>
+<main style="margin: auto; text-align: center">
+    <div id="score">Joueur <span id="score0" style="color:black">0</span> - <span id="score1" style="color:black">0</span> IA</div><br />
+    <table id="grid">
+    </table>
+    <h1 id="won-lost"></h1>
+    <script src="./game.js"></script>
+</main>
 </body>
 </html>
