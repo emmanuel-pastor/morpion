@@ -10,11 +10,6 @@ function initView() {
     }
 }
 
-const PlayerType = {
-    USER: 0,
-    IA: 1
-}
-
 const GameStatus = {
     PLAYING: 0,
     WON: 1,
@@ -31,17 +26,18 @@ function IAPlay(leftCells) {
     return leftCells[Math.floor(Math.random() * leftCells.length)];
 }
 
-function Game(players) {
-    this.players = players
-    this.whoseTurn = PlayerType.USER;
+function Game(user, ai) {
+    this.user = user
+    this.ai = ai
+    this.whoseTurn = user;
     this.leftGridCells = Array(9);
     this.grid = Array(9);
 
-    this.init = () => {
+    this.initGame = () => {
         initView();
 
         for(let i=0; i < 9; i++) {
-            document.getElementById("cell" + i).addEventListener("click", game.handleClick);
+            document.getElementById("cell" + i).addEventListener("click", this.handleClick);
         }
 
         for (let i = 0; i < 9; i++) {
@@ -49,12 +45,12 @@ function Game(players) {
         }
     }
 
-    this.start = (startingPlayerType) => {
-        this.init()
-        if (startingPlayerType !== undefined)
-            this.whoseTurn = startingPlayerType;
+    this.start = (startingPlayer) => {
+        this.initGame()
+        if (startingPlayer !== undefined)
+            this.whoseTurn = startingPlayer;
 
-        if (startingPlayerType === PlayerType.IA) {
+        if (this.whoseTurn === this.ai) {
             this.handlePlay(IAPlay(this.leftGridCells));
         }
     }
@@ -70,7 +66,7 @@ function Game(players) {
             [0,4,8],
             [2,4,6]
         ]
-        const currentSymbol = this.players[this.whoseTurn].symbol;
+        const currentSymbol = this.whoseTurn.symbol;
 
         for (const indexes of winConditions) {
             if (this.grid[indexes[0]] === currentSymbol && this.grid[indexes[1]] === currentSymbol && this.grid[indexes[2]] === currentSymbol) {
@@ -91,9 +87,10 @@ function Game(players) {
 
         document.getElementById(`won-lost`).textContent = "";
     }
+
     this.handleClick = (e) => {
         const cellNumber = parseInt(e.currentTarget.id.split('cell')[1]);
-        if (this.whoseTurn !== PlayerType.USER) {
+        if (this.whoseTurn !== user) {
             console.log("not your turn!");
         } else {
             if(this.leftGridCells.includes(cellNumber))
@@ -102,46 +99,52 @@ function Game(players) {
     }
 
     this.handlePlay = (cellNumber) => {
-        this.grid[cellNumber] = players[this.whoseTurn].symbol;
+        this.grid[cellNumber] = this.whoseTurn.symbol
         this.leftGridCells.splice(this.leftGridCells.indexOf(cellNumber), 1);
         this.updateGridView(cellNumber);
         const gameStatus = this.checkGrid();
         if (gameStatus !== GameStatus.PLAYING) {
-            if(gameStatus !== GameStatus.DRAW)
-                this.players[this.whoseTurn].score += 1;
+            if(gameStatus !== GameStatus.DRAW) {
+                if(this.whoseTurn === user) {
+                    user.score += 1
+                } else {
+                    ai.score += 1
+                }
+            }
             this.updateScoreView()
             this.updateWonLostView(gameStatus);
             setTimeout(() => {
                 game.resetView();
-                this.whoseTurn = (this.whoseTurn + 1) % 2 ;
-                if (this.whoseTurn === PlayerType.IA) {
-                    this.handlePlay(IAPlay(this.leftGridCells));
-                }
+                this.switchPlayer()
             }, 2000);
         } else {
-            this.whoseTurn = (this.whoseTurn + 1) % 2;
-            if (this.whoseTurn === PlayerType.IA) {
-                this.handlePlay(IAPlay(this.leftGridCells));
-            }
+            this.switchPlayer()
+        }
+    }
+
+    this.switchPlayer = () => {
+        this.whoseTurn = this.whoseTurn === user ? ai : user ;
+        if (this.whoseTurn === ai) {
+            this.handlePlay(IAPlay(this.leftGridCells));
         }
     }
 
     this.updateGridView = (cellNumber) => {
-        document.getElementById("cell" + cellNumber.toString()).textContent = this.players[this.whoseTurn].symbol;
+        document.getElementById("cell" + cellNumber.toString()).textContent = this.whoseTurn.symbol;
     }
 
     this.updateScoreView = () => {
-        document.getElementById(`score0`).textContent = this.players[0].score;
-        document.getElementById(`score1`).textContent = this.players[1].score;
+        document.getElementById(`score0`).textContent = this.user.score;
+        document.getElementById(`score1`).textContent = this.ai.score;
     }
 
     this.updateWonLostView = (gameStatus) => {
-        const message = gameStatus === GameStatus.WON && this.whoseTurn === PlayerType.USER ? "Vous avez Gagné !" : gameStatus === GameStatus.DRAW ? "Égalité..." : "Vous avez perdu :(";
+        const message = gameStatus === GameStatus.WON && this.whoseTurn === user ? "Vous avez Gagné !" : gameStatus === GameStatus.DRAW ? "Égalité..." : "Vous avez perdu :(";
         document.getElementById(`won-lost`).textContent = message;
     }
 }
 
-const player1 = new Player(0, "X");
-const player2 = new Player(0, "O");
-const game = new Game([player1, player2]);
-game.start(PlayerType.IA);
+const user = new Player(0, "👦");
+const ai = new Player(0, "💻");
+const game = new Game(user, ai);
+game.start(ai);
