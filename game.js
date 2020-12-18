@@ -32,6 +32,7 @@ function Game(user, ai) {
     this.whoseTurn = user;
     this.leftGridCells = Array(9);
     this.grid = Array(9);
+    this.gameStatus = GameStatus.PLAYING;
 
     this.initGame = () => {
         initView();
@@ -81,6 +82,8 @@ function Game(user, ai) {
         for (let i = 0; i < 9; i++) {
             this.leftGridCells[i] = i;
         }
+        this.gameStatus = GameStatus.PLAYING;
+
         for(let i=0; i < 9; i++) {
             document.getElementById("cell" + i).textContent = "";
         }
@@ -92,6 +95,8 @@ function Game(user, ai) {
         const cellNumber = parseInt(e.currentTarget.id.split('cell')[1]);
         if (this.whoseTurn !== user) {
             console.log("not your turn!");
+        } else if(this.gameStatus !== GameStatus.PLAYING) {
+            console.log("the game is already over")
         } else {
             if(this.leftGridCells.includes(cellNumber))
                 this.handlePlay(cellNumber);
@@ -102,9 +107,9 @@ function Game(user, ai) {
         this.grid[cellNumber] = this.whoseTurn.symbol
         this.leftGridCells.splice(this.leftGridCells.indexOf(cellNumber), 1);
         this.updateGridView(cellNumber);
-        const gameStatus = this.checkGrid();
-        if (gameStatus !== GameStatus.PLAYING) {
-            if(gameStatus !== GameStatus.DRAW) {
+        this.gameStatus = this.checkGrid();
+        if (this.gameStatus !== GameStatus.PLAYING) {
+            if(this.gameStatus !== GameStatus.DRAW) {
                 if(this.whoseTurn === user) {
                     user.score += 1
                 } else {
@@ -112,7 +117,7 @@ function Game(user, ai) {
                 }
             }
             this.updateScoreView()
-            this.updateWonLostView(gameStatus);
+            this.updateWonLostView();
             setTimeout(() => {
                 game.resetView();
                 this.switchPlayer()
@@ -138,8 +143,8 @@ function Game(user, ai) {
         document.getElementById(`score1`).textContent = this.ai.score;
     }
 
-    this.updateWonLostView = (gameStatus) => {
-        const message = gameStatus === GameStatus.WON && this.whoseTurn === user ? "Vous avez Gagné !" : gameStatus === GameStatus.DRAW ? "Égalité..." : "Vous avez perdu :(";
+    this.updateWonLostView = () => {
+        const message = this.gameStatus === GameStatus.WON && this.whoseTurn === user ? "Vous avez Gagné !" : this.gameStatus === GameStatus.DRAW ? "Égalité..." : "Vous avez perdu :(";
         document.getElementById(`won-lost`).textContent = message;
     }
 }
