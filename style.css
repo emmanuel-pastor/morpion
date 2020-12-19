@@ -1,3 +1,20 @@
 * {
-    text-align: center;
+    font-family: "Roboto Light", Arial, serif;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    border-style: hidden;
+    font-size: larger;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+th {
+    border: 3px solid black;
+    width: 3cm;
+    height: 3cm;
 }
