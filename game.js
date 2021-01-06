@@ -201,6 +201,6 @@ function EmojiPicker(game, emojiList) {
 const user = new Player(0, "👦");
 const ai = new Player(0, "💻");
 const game = new Game(user, ai);
-const emojiPicker = new EmojiPicker(game, ['👦', '👩', '👽', '🦝', '🦄', '🐬', '❌', '⭕', '✔']);
+new EmojiPicker(game, ['👦', '👩', '👽', '🦝', '🦄', '🐬', '❌', '⭕', '✔', '😺', '🐶', '🐼']);
 
 game.start(ai);

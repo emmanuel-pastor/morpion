@@ -31,3 +31,29 @@
     font-size: larger;
     background: lightblue;
 }
+
+#player {
+    border: 1px solid;
+    margin: -1px;
+    float: left;
+    width: 200px;
+}
+
+#AI {
+    border: 1px solid;
+    margin: -1px;
+    float: left;
+    width: 200px;
+}
+
+#score_player {
+    border: 1px solid;
+    margin: -1px;
+    float: left;
+    width: 100px;
+}
+
+#score  {
+    width: 500px;
+    margin: auto;
+}
