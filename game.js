@@ -21,7 +21,7 @@ function Player(initialScore, symbol) {
     this.symbol = symbol;
 }
 
-// returns cell number that is AI wants to play
+// returns cell number that AI wants to play
 function IAPlay(leftCells) {
     return leftCells[Math.floor(Math.random() * leftCells.length)];
 }
@@ -149,7 +149,58 @@ function Game(user, ai) {
     }
 }
 
+
+function EmojiPicker(game, emojiList) {
+    this.selectedId = 'emoji0';
+
+    this.handleEmojiClick = (event) => {
+        const element = event.currentTarget;
+
+        if (game.leftGridCells.length !== 9 && (game.leftGridCells.length !== 8 || game.whoseTurn !== game.user)) {
+            console.log("Cannot change emoji during a game");
+            return;
+        }
+
+
+        document.getElementById(this.selectedId).classList.remove('selected');
+        this.selectedId = element.id
+        element.classList.add('selected')
+
+        game.user.symbol = element.innerText
+    }
+
+    this.initEmojiPicker = () => {
+        let k = 0;
+        for (let i = 0; i < emojiList.length/3; i++) {
+            const  table = document.getElementById("user-emoji-table")
+
+            table.innerHTML += `<tr id='row${i}'></tr>`;
+            for (let j = 0; j < 3; j++) {
+                const row = document.getElementById(`row${i}`)
+
+                if (emojiList[k] === undefined) {
+                    row.innerHTML += `<td id='emoji${k}'></td>`
+                } else {
+                    row.innerHTML += `<td id='emoji${k}'>${emojiList[k]}</td>`;
+                }
+
+                k += 1;
+            }
+        }
+
+        document.getElementById('emoji0').classList.add('selected');
+        for (let i=0; i < emojiList.length; i++) {
+            document.getElementById(`emoji${i}`).addEventListener("click", this.handleEmojiClick);
+        }
+    }
+
+    //Initialization of EmojiPicker immediately when created
+    this.initEmojiPicker();
+}
+
 const user = new Player(0, "👦");
 const ai = new Player(0, "💻");
 const game = new Game(user, ai);
+const emojiPicker = new EmojiPicker(game, ['👦', '👩', '👽', '🦝', '🦄', '🐬', '❌', '⭕', '✔']);
+
 game.start(ai);

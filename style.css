@@ -2,7 +2,7 @@
     font-family: "Roboto Light", Arial, serif;
 }
 
-table {
+#grid {
     border-collapse: collapse;
     margin: auto;
     border-style: hidden;
@@ -13,8 +13,21 @@ table {
     transform: translate(-50%, -50%);
 }
 
-th {
+#grid th {
     border: 3px solid black;
     width: 3cm;
     height: 3cm;
+    cursor: pointer;
+}
+
+#user-emoji-table td {
+    width: 1cm;
+    height: 1cm;
+    cursor: pointer;
+}
+
+.selected {
+    border: 1px solid black;
+    font-size: larger;
+    background: lightblue;
 }

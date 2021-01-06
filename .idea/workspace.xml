@@ -4,6 +4,8 @@
     <list default="true" id="8a03cf59-0e72-4eab-b3d4-f3d7aeae8d8c" name="Default Changelist" comment="version 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +37,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Pprojet Web Benjamin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -56,6 +59,9 @@
       <workItem from="1606986772195" duration="23491000" />
       <workItem from="1607121431924" duration="594000" />
       <workItem from="1608275286965" duration="5517000" />
+      <workItem from="1608732556549" duration="602000" />
+      <workItem from="1608816944055" duration="653000" />
+      <workItem from="1609943544278" duration="1435000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1607021572423</created>
@@ -64,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607021572423</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Change the look of the grid&#10;&#10;Change the grid appearance&#10;Add emojis to winning/losing messages&#10;Center grid">
+      <created>1608388197018</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608388197018</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,9 +93,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="version 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1" />
+    <MESSAGE value="Change the look of the grid&#10;&#10;Change the grid appearance&#10;Add emojis to winning/losing messages&#10;Center grid" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change the look of the grid&#10;&#10;Change the grid appearance&#10;Add emojis to winning/losing messages&#10;Center grid" />
   </component>
 </project>
