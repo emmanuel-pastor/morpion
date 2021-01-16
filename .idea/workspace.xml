@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a03cf59-0e72-4eab-b3d4-f3d7aeae8d8c" name="Default Changelist" comment="version 1">
+      <change afterPath="$PROJECT_DIR$/morpion_logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="235c7640f8f610e56606f8f20828107f9f62372c" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,6 +52,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OMman\Documents\Cours Web\morpion" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" uri="http://localhost:63342/morpion/index.html" useBuiltInWebServerPort="true">
@@ -73,6 +81,10 @@
       <workItem from="1608816944055" duration="653000" />
       <workItem from="1609943544278" duration="5249000" />
       <workItem from="1609954641227" duration="842000" />
+      <workItem from="1609955581638" duration="3039000" />
+      <workItem from="1610233419968" duration="84000" />
+      <workItem from="1610744969567" duration="10634000" />
+      <workItem from="1610794972363" duration="2278000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1607021572423</created>
@@ -95,7 +107,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609945169065</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="to rebase">
+      <created>1609955665076</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609955665076</updated>
+    </task>
+    <task id="LOCAL-00005" summary="to rebase">
+      <created>1610758003646</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610758003646</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +143,7 @@
     <MESSAGE value="version 1" />
     <MESSAGE value="Change the look of the grid&#10;&#10;Change the grid appearance&#10;Add emojis to winning/losing messages&#10;Center grid" />
     <MESSAGE value="Add emoji picker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add emoji picker" />
+    <MESSAGE value="to rebase" />
+    <option name="LAST_COMMIT_MESSAGE" value="to rebase" />
   </component>
 </project>

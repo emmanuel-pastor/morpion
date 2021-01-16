@@ -1,59 +1,103 @@
 * {
     font-family: "Roboto Light", Arial, serif;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr 1fr auto 1fr;
+    justify-items: center;
+    min-height: 100vh;
+    margin: auto;
+    text-align: center;
+    background: linear-gradient(to right bottom, #42EBAE, #1fa6ff, #FF00F5);
+    padding: 1.5rem;
+}
+
+.glass {
+    width: max-content;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+#grid_wrapper {
+    grid-column: 2;
+    grid-row: 3;
+    height: max-content;
 }
 
 #grid {
     border-collapse: collapse;
-    margin: auto;
     border-style: hidden;
-    font-size: larger;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-size: xx-large;
 }
 
 #grid th {
-    border: 3px solid black;
+    border: 0.44rem solid white;
     width: 3cm;
     height: 3cm;
     cursor: pointer;
 }
 
+#user-emoji-table {
+    font-size: x-large;
+}
+
 #user-emoji-table td {
-    width: 1cm;
-    height: 1cm;
+    text-align: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
     cursor: pointer;
 }
 
+#user_emoji_table_wrapper {
+    grid-column: 1;
+    grid-row: 3;
+    height: max-content;
+}
+
 .selected {
-    border: 1px solid black;
-    font-size: larger;
-    background: lightblue;
+    border: 2px solid white;
+    border-radius: 1rem;
+    background: rgba(31, 166, 255, 0.2);
+    font-size: xx-large;
 }
 
-#player {
-    border: 1px solid;
-    margin: -1px;
-    float: left;
-    width: 200px;
+#score {
+    width: -webkit-fill-available;
+    width: -moz-available;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    height: max-content;
+    font-size: large;
+    color: white;
+    font-weight: bolder;
 }
 
-#AI {
-    border: 1px solid;
-    margin: -1px;
-    float: left;
-    width: 200px;
+#score_result_wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    grid-column: 2;
+    grid-row: 1;
 }
 
-#score_player {
-    border: 1px solid;
-    margin: -1px;
-    float: left;
-    width: 100px;
-}
-
-#score  {
-    width: 500px;
-    margin: auto;
+#won-lost {
+    grid-column: 2;
+    grid-row: 2;
+    color: white;
 }

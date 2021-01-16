@@ -144,7 +144,7 @@ function Game(user, ai) {
     }
 
     this.updateWonLostView = () => {
-        const message = this.gameStatus === GameStatus.WON && this.whoseTurn === user ? "🎉 Vous avez Gagné 🎉" : this.gameStatus === GameStatus.DRAW ? "Égalité... 😬" : "Vous avez perdu 😢";
+        const message = this.gameStatus === GameStatus.WON && this.whoseTurn === user ? "🎉 Vous avez gagné 🎉" : this.gameStatus === GameStatus.DRAW ? "Égalité... 😬" : "Vous avez perdu 😢";
         document.getElementById(`won-lost`).textContent = message;
     }
 }

@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="screen" href="style.css" type="text/css" />
+    <link rel="icon" href="./morpion_logo.svg"/>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
     <title>Jeu du Morpion</title>
 </head>
 <body>
-<main style="margin: auto; text-align: center">
-    <div id="score">
-        <div id="player">Joueur</div>
-        <div id="score_player"><span id="score0">0</span> - <span id="score1">0</span></div>
-        <div id="AI">IA</div>
-        <br />
+<main>
+    <div id="score_result_wrapper">
+        <div id="score" class="glass">
+            <span id="player">Joueur</span>
+            <span id="score_player"><span id="score0">0</span> - <span id="score1">0</span></span>
+            <span id="AI">IA</span>
+        </div>
     </div>
     <h1 id="won-lost"></h1>
-    <table id="user-emoji-table"></table>
-    <table id="grid"></table>
+    <div class="glass" id="user_emoji_table_wrapper">
+        <table id="user-emoji-table"></table>
+    </div>
+    <div id="grid_wrapper" class="glass">
+        <table id="grid"></table>
+    </div>
     <script src="./game.js"></script>
 </main>
 </body>
