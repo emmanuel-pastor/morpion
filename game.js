@@ -22,7 +22,7 @@ function Player(initialScore, symbol) {
 }
 
 // returns cell number that AI wants to play
-function IAPlay(leftCells) {
+function AIPlay(leftCells) {
     return leftCells[Math.floor(Math.random() * leftCells.length)];
 }
 
@@ -52,7 +52,7 @@ function Game(user, ai) {
             this.whoseTurn = startingPlayer;
 
         if (this.whoseTurn === this.ai) {
-            this.handlePlay(IAPlay(this.leftGridCells));
+            this.handlePlay(AIPlay(this.leftGridCells));
         }
     }
 
@@ -130,7 +130,7 @@ function Game(user, ai) {
     this.switchPlayer = () => {
         this.whoseTurn = this.whoseTurn === user ? ai : user ;
         if (this.whoseTurn === ai) {
-            this.handlePlay(IAPlay(this.leftGridCells));
+            this.handlePlay(AIPlay(this.leftGridCells));
         }
     }
 
