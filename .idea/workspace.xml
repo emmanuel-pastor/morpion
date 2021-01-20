@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a03cf59-0e72-4eab-b3d4-f3d7aeae8d8c" name="Default Changelist" comment="version 1">
-      <change afterPath="$PROJECT_DIR$/morpion_logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +48,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Pprojet Web Benjamin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="liveEdit" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -85,6 +83,8 @@
       <workItem from="1610233419968" duration="84000" />
       <workItem from="1610744969567" duration="10634000" />
       <workItem from="1610794972363" duration="2278000" />
+      <workItem from="1611153318820" duration="11685000" />
+      <workItem from="1611179729640" duration="1970000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1607021572423</created>
@@ -121,7 +121,35 @@
       <option name="project" value="LOCAL" />
       <updated>1610758003646</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Clean the codebase">
+      <created>1611165461218</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611165461218</updated>
+    </task>
+    <task id="LOCAL-00007" summary="to rebase">
+      <created>1611179820343</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611179820343</updated>
+    </task>
+    <task id="LOCAL-00008" summary="to rebase">
+      <created>1611180787673</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611180787673</updated>
+    </task>
+    <task id="LOCAL-00009" summary="to rebase">
+      <created>1611181041986</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1611181041986</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +171,7 @@
     <MESSAGE value="version 1" />
     <MESSAGE value="Change the look of the grid&#10;&#10;Change the grid appearance&#10;Add emojis to winning/losing messages&#10;Center grid" />
     <MESSAGE value="Add emoji picker" />
+    <MESSAGE value="Clean the codebase" />
     <MESSAGE value="to rebase" />
     <option name="LAST_COMMIT_MESSAGE" value="to rebase" />
   </component>

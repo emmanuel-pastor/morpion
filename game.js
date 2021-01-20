@@ -21,17 +21,12 @@ function Player(initialScore, symbol) {
     this.symbol = symbol;
 }
 
-// returns cell number that AI wants to play
-function AIPlay(leftCells) {
-    return leftCells[Math.floor(Math.random() * leftCells.length)];
-}
-
 function Game(user, ai) {
-    this.user = user
-    this.ai = ai
-    this.whoseTurn = user;
-    this.leftGridCells = Array(9);
-    this.grid = Array(9);
+    this.user = user;
+    this.ai = ai;
+    this.whoseTurn = user; //It is the turn of the user by default
+    this.leftGridCells = Array(9); // Contains the indexes of the cells that can be clicked
+    this.grid = Array(9); // Represents the state of the grid. Each cell can contain the symbol of the player that played in this cell.
     this.gameStatus = GameStatus.PLAYING;
 
     this.initGame = () => {
@@ -39,21 +34,24 @@ function Game(user, ai) {
 
         for(let i=0; i < 9; i++) {
             document.getElementById("cell" + i).addEventListener("click", this.handleClick);
-        }
 
-        for (let i = 0; i < 9; i++) {
             this.leftGridCells[i] = i;
         }
     }
 
     this.start = (startingPlayer) => {
         this.initGame()
+
         if (startingPlayer !== undefined)
             this.whoseTurn = startingPlayer;
 
-        if (this.whoseTurn === this.ai) {
-            this.handlePlay(AIPlay(this.leftGridCells));
-        }
+        if (this.whoseTurn === this.ai)
+            this.handlePlay(this.AIPlay(this.leftGridCells));
+    }
+
+    // Returns the cell number that the AI wants to play
+    this.AIPlay = () => {
+        return this.leftGridCells[Math.floor(Math.random() * this.leftGridCells.length)];
     }
 
     this.checkGrid = () => {
@@ -66,7 +64,8 @@ function Game(user, ai) {
             [6,7,8],
             [0,4,8],
             [2,4,6]
-        ]
+        ]; //List of combinations that mean that the player won.
+        // The numbers corresponds to the cells in the grid that must be filled in for the player to have won.
         const currentSymbol = this.whoseTurn.symbol;
 
         for (const indexes of winConditions) {
@@ -74,29 +73,32 @@ function Game(user, ai) {
                 return GameStatus.WON;
             }
         }
+
+        // If there are no grid cells left, the game is over and since the current player did not win, that means the game ended on a draw.
         return this.leftGridCells.length === 0 ? GameStatus.DRAW : GameStatus.PLAYING;
     }
 
-    this.resetView = () => {
+    this.resetGame = () => {
         this.grid = Array(9);
+
         for (let i = 0; i < 9; i++) {
             this.leftGridCells[i] = i;
-        }
-        this.gameStatus = GameStatus.PLAYING;
 
-        for(let i=0; i < 9; i++) {
             document.getElementById("cell" + i).textContent = "";
         }
+
+        this.gameStatus = GameStatus.PLAYING;
 
         document.getElementById(`won-lost`).textContent = "";
     }
 
     this.handleClick = (e) => {
         const cellNumber = parseInt(e.currentTarget.id.split('cell')[1]);
+
         if (this.whoseTurn !== user) {
             console.log("not your turn!");
         } else if(this.gameStatus !== GameStatus.PLAYING) {
-            console.log("the game is already over")
+            console.log("the game is already over");
         } else {
             if(this.leftGridCells.includes(cellNumber))
                 this.handlePlay(cellNumber);
@@ -108,6 +110,7 @@ function Game(user, ai) {
         this.leftGridCells.splice(this.leftGridCells.indexOf(cellNumber), 1);
         this.updateGridView(cellNumber);
         this.gameStatus = this.checkGrid();
+
         if (this.gameStatus !== GameStatus.PLAYING) {
             if(this.gameStatus !== GameStatus.DRAW) {
                 if(this.whoseTurn === user) {
@@ -119,7 +122,7 @@ function Game(user, ai) {
             this.updateScoreView()
             this.updateWonLostView();
             setTimeout(() => {
-                game.resetView();
+                game.resetGame();
                 this.switchPlayer()
             }, 2000);
         } else {
@@ -128,9 +131,10 @@ function Game(user, ai) {
     }
 
     this.switchPlayer = () => {
-        this.whoseTurn = this.whoseTurn === user ? ai : user ;
+        this.whoseTurn = this.whoseTurn === user ? ai : user;
+
         if (this.whoseTurn === ai) {
-            this.handlePlay(AIPlay(this.leftGridCells));
+            this.handlePlay(this.AIPlay());
         }
     }
 
@@ -156,6 +160,7 @@ function EmojiPicker(game, emojiList) {
     this.handleEmojiClick = (event) => {
         const element = event.currentTarget;
 
+        // Checks if the player has already put a symbol on the grid
         if (game.leftGridCells.length !== 9 && (game.leftGridCells.length !== 8 || game.whoseTurn !== game.user)) {
             console.log("Cannot change emoji during a game");
             return;
@@ -198,9 +203,11 @@ function EmojiPicker(game, emojiList) {
     this.initEmojiPicker();
 }
 
-const user = new Player(0, "👦");
+const emojiList = ['👦', '👩', '👽', '🦝', '🦄', '🐬', '❌', '⭕', '✔', '😺', '🐶', '🐼'];
+
+const user = new Player(0, emojiList[0]);
 const ai = new Player(0, "💻");
 const game = new Game(user, ai);
-new EmojiPicker(game, ['👦', '👩', '👽', '🦝', '🦄', '🐬', '❌', '⭕', '✔', '😺', '🐶', '🐼']);
+new EmojiPicker(game, emojiList);
 
 game.start(ai);
